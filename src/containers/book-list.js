@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
  class BookList extends Component {
   renderList() {
@@ -10,6 +10,7 @@ import { connect } from 'react-redux'
     })
   }
   render() {
+    
     return (
       <ul className='list group col-sm-4'>
         {this.renderList()}
@@ -18,9 +19,14 @@ import { connect } from 'react-redux'
   }
 }
 //purpose of this functio is to take application state as an argument
-//state conatins an array of books and the active book
+//!!state conatins an array of books and the active book!!
 function mapStateToProps(state) {
   //whatever gets returned from here will show up as props inside of BookList
-
-  return
+  //whatever gets returned here gets set to this.props
+  return {
+    books: state.books
+  };
 }
+//connect takes a function and a component and makes a CONTAINER
+
+export default connect(mapStateToProps)(BookList);
